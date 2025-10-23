@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolates Indemini Baz</title>
+    <style>
+        /* ===== ESTILOS GENERALES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #3e2723;
+            line-height: 1.6;
+        }
+
+        /* ===== NAVEGACIÓN ===== */
+        nav {
+            background-color: #4e342e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d7ccc8;
+        }
+
+        /* ===== SECCIÓN PORTADA ===== */
+        #portada {
+            height: 100vh;
+            background: linear-gradient(rgba(62, 39, 35, 0.6), rgba(62, 39, 35, 0.6)),
+            url('imagenes/portada.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        #portada h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #portada p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: #d84315;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #bf360c;
+        }
+
+        /* ===== SECCIÓN PRODUCTOS ===== */
+        #productos {
+            padding: 4rem 2rem;
+            background-color: #fafafa;
+        }
+
+        #productos h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #4e342e;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cada tarjeta de producto */
+        .producto-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .producto-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .producto-info {
+            padding: 1.5rem;
+        }
+
+        .producto-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #4e342e;
+        }
+
+        .producto-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .precio {
+            font-size: 1.3rem;
+            color: #d84315;
+            font-weight: bold;
+        }
+
+        /* ===== SECCIÓN FORMULARIO ===== */
+        #contacto {
+            padding: 4rem 2rem;
+            background-color: #efebe9;
+        }
+
+        #contacto h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #4e342e;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4e342e;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #d7ccc8;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #d84315;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ===== PIE DE PÁGINA ===== */
+        footer {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+<!-- NAVEGACIÓN: Menú principal que se mantiene fijo arriba -->
+<nav>
+    <ul>
+        <li><a href="#portada">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- PORTADA: Primera pantalla con imagen de fondo y título principal -->
+<section id="portada">
+    <h1>Chocolates Indemini Baez</h1>
+    <p>La exquisitez del chocolate artesanal</p>
+    <a href="#productos" class="btn">Ver Productos</a>
+</section>
+
+<!-- PRODUCTOS: Galería de chocolates con imágenes y precios -->
+<section id="productos">
+    <h2>Nuestros Productos</h2>
+    <div class="productos-grid">
+
+        <!-- PRODUCTO 1: Cambia "imagenes/producto1.jpg" por el nombre de tu foto -->
+        <div class="producto-card">
+            <img src="imagenes/bombones.jpg" alt="Trufas de Chocolate">
+            <div class="producto-info">
+                <h3>Trufas Artesanales</h3>
+                <p>Deliciosas trufas de chocolate 100% con rellenos únicos</p>
+                <span class="precio x u">$1.OO</span>
+            </div>
+        </div>
+
+        <!-- PRODUCTO 2: Cambia el nombre de la imagen -->
+        <div class="producto-card">
+            <img src="imagenes/255wuf_u_400x400.jpg" alt="Tabletas de Chocolate">
+            <div class="producto-info">
+                <h3>Tabletas Premium</h3>
+                <p>Tabletas de chocolate negro desd el 60 % hasta 100% cacao con ingredientes naturales</p>
+                <span class="precio">$6.00</span>
+            </div>
+        </div>
+
+        <!-- PRODUCTO 3: Cambia el nombre de la imagen -->
+        <div class="producto-card">
+            <img src="imagenes/bombones.jpg" alt="Bombones">
+            <div class="producto-info">
+                <h3>Bombones Surtidos</h3>
+                <p>Caja de 12 bombones con variedades de sabores exquisitos</p>
+                <span class="precio">$15.99</span>
+            </div>
+        </div>
+        <!-- PRODUCTO 5: Cambia el nombre de la imagen -->
+        <div class="producto-card">
+            <img src="imagenes/cajabombones.jpg" alt="Caja Regalo">
+            <div class="producto-info">
+                <h3>Caja Regalo</h3>
+                <p>Elegante caja con selección de nuestros mejores chocolates</p>
+                <span class="precio">$11.99</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FORMULARIO DE CONTACTO: Para pedidos o consultas -->
+<section id="contacto">
+    <h2>Contáctanos</h2>
+    <form id="formulario-contacto">
+
+        <!-- Campo Nombre -->
+        <div class="form-group">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <!-- Campo Email -->
+        <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Campo Teléfono -->
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+        </div>
+
+        <!-- Selector de Producto -->
+        <div class="form-group">
+            <label for="producto">Producto de interés:</label>
+            <select id="producto" name="producto">
+                <option value="">Selecciona un producto</option>
+                <option value="trufas">Trufas Artesanales</option>
+                <option value="tabletas">Tabletas Premium</option>
+                <option value="bombones">Bombones Surtidos</option>
+                <option value="blanco">Chocolate Blanco</option>
+                <option value="almendras">Chocolate con Almendras</option>
+                <option value="regalo">Caja Regalo</option>
+            </select>
+        </div>
+
+        <!-- Campo Mensaje -->
+        <div class="form-group">
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+        </div>
+
+        <!-- Botón de Envío -->
+        <button type="submit" class="btn">Enviar Mensaje</button>
+    </form>
+</section>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+    <p>&copy; 2025 Chocolates Indemini Baz. Todos los derechos reservados.</p>
+    <p>Síguenos en redes sociales</p>
+</footer>
+
+<script>
+    // SCRIPT: Manejo del formulario
+    // Cuando el usuario envía el formulario, se muestra un mensaje
+    document.getElementById('formulario-contacto').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que la página se recargue
+
+        // Aquí puedes agregar código para enviar los datos a un servidor
+        // Por ahora solo mostramos un mensaje de confirmación
+        alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+
+        // Limpia el formulario
+        this.reset();
+    });
+
+    // SCRIPT: Scroll suave al hacer clic en los enlaces del menú
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+</script>
+</body>
+</html>
